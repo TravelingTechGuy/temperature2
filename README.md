@@ -26,6 +26,24 @@ The Python code exposes a REST API on port 7000 to fetch data and control the de
 - The Python program routinely pulls temperature and humidity metrics from the sketch by calling `get_sensor_data` via the Bridge.
 - The Python program can choose if the displayed temperature on the hardware will be in C or F by calling `set_device_units` via the Bridge.
 
+## Database
+The application uses an InfluxDB time series database to persistently store historical metrics. This is managed via the `TimeSeriesStore` brick.
+
+- **Measurement Name**: All data is recorded under the `weather` measurement (collection).
+- **Stored Metrics**: The database logs three separate measures during each polling interval: `celsius`, `fahrenheit`, and `humidity`.
+- **Data Structure**: When accessed via the Python interface (such as by the `/history` API), the individual measures are queried and merged by their shared millisecond Unix timestamp. The resulting data is structured like this:
+
+```json
+[
+  {
+    "timestamp": 1715000000000,
+    "celsius": 24.5,
+    "fahrenheit": 76.1,
+    "humidity": 45.2
+  }
+]
+```
+
 ## Dependencies
 The sketch uses the following libraries:
 1. Arduino_LED_Matrix (built in) - to control the LED matrix
