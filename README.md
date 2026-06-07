@@ -1,6 +1,6 @@
 # 🌡️ Temperature2
 This app uses a Modulino Thermo to get the temperature in Celsius, and present it on the built in LED Matrix.
-It then sends the temperature (in both C, and F), and the humidity back to Python, to be stored in a Time Series DB (InfluxDB). The web interface then shows current, and historic data.
+The Python backend periodically pulls the temperature (in both C, and F) and the humidity from the device, storing it in a Time Series DB (InfluxDB). The web interface then shows current, and historic data.
 
 <img src="assets/doc_assets/in_action.jpg" alt="app in action" />
 
@@ -10,18 +10,21 @@ The Python application serves a responsive web dashboard at `http://<localhost>:
 <img src="assets/doc_assets/webUI.png" alt="Web UI Screenshot" />
 
 - **Displays**: Current temperature (in both °C and °F), current humidity, and the time of the last measurement.
-- **History Chart**: A real-time updating chart showing the last 4 hours of temperature and humidity data (updated every 10 minutes).
-- **Controls**: A toggle button allows users to change the temperature units (°C or °F) displayed on the physical Modulino LED matrix.
+- **History Chart**: A real-time updating chart showing temperature and humidity data over a user-selectable history range (2 to 24 hours, automatically refreshed every 5 minutes).
+- **Controls**: A floating Settings modal allows users to change the temperature units (°C or °F) displayed on the physical Modulino LED matrix and adjust the history chart range.
 
 ## Python API
 The Python code exposes a REST API on port 7000 to fetch data and control the device:
 - `GET /temp`: Returns the most recent sensor readings and a UTC timestamp. Example: `{"timestamp_utc": "...", "celsius": 24.5, "fahrenheit": 76.1, "humidity": 45.2}`
+- `GET /history?hours=4`: Returns historical sensor data from the time series database for the specified number of hours. Example: `{"hours": 4, "count": 12, "samples": [...]}`
 - `GET /units`: Gets the temperature unit currently displayed on the hardware. Example: `{"units": "F"}`
 - `GET /setUnits`: Toggles the hardware display unit between Celsius and Fahrenheit. Returns the newly set unit. Example: `{"units": "C"}`
+- `GET /interval`: Gets the current background polling interval in seconds. Example: `{"intervalInSeconds": 300}`
+- `GET /setInterval?interval=300`: Sets the background polling interval in seconds. Example: `{"intervalInSeconds": 300}`
 
 ## Internal Hardware Interface
-- The sketch sends temepratures and humidity to the Python program by calling `updateTemperature`
-- The Python program can choose if the displayed temperature will be in C or F by calling `setDegrees`
+- The Python program routinely pulls temperature and humidity metrics from the sketch by calling `get_sensor_data` via the Bridge.
+- The Python program can choose if the displayed temperature on the hardware will be in C or F by calling `set_device_units` via the Bridge.
 
 ## Dependencies
 The sketch uses the following libraries:
