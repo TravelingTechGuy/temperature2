@@ -16,7 +16,7 @@
             <h1>Modulino Thermo Dashboard</h1>
             <p id="timestamp">Last measurement: Loading...</p>
         </div>
-        <button onclick="openSettings()" class="settings-btn" title="Settings">⚙️</button>
+        <button onclick="openSettings()" class="settings-btn" title="Settings">⚙️ Settings</button>
     </header>
 
     <div class="container flex-col">
@@ -56,6 +56,9 @@
                     <option value="12">12 hours</option>
                     <option value="24">24 hours</option>
                 </select>
+            </div>
+            <div class="modal-footer">
+                <button onclick="closeSettings()" class="btn-ok">OK</button>
             </div>
         </div>
     </div>
