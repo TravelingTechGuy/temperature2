@@ -267,3 +267,46 @@ h1 {
 .btn-ok:hover {
   background: #45a049;
 }
+
+/* Responsive Tweaks for Mobile Devices */
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .value-display {
+    font-size: 2.2rem; /* Scale down the long temperature text */
+  }
+
+  .value-display-small {
+    font-size: 2rem;
+  }
+
+  .display-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+    max-height: 90vh;
+    overflow-y: auto; /* Prevent modal from breaking layout if height exceeds screen */
+  }
+
+  .modal-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .btn-primary, .select-dropdown {
+    width: 100%;
+  }
+}
