@@ -7,7 +7,7 @@ The Python backend periodically pulls the temperature (in both C, and F) and the
 ## Web Interface
 The Python application serves a responsive web dashboard at `http://<localhost>:7000/`.
 
-![Web UI Screenshot](assets/doc_assets/WebUI.png)
+![Web UI Screenshot](assets/doc_assets/web_ui.png)
 
 - **Displays**: Current temperature (in both °C and °F), current humidity, and the time of the last measurement.
 - **History Chart**: A real-time updating chart showing temperature and humidity data over a user-selectable history range (2 to 24 hours, automatically refreshed every 5 minutes).
