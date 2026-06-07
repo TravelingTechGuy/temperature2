@@ -2,12 +2,12 @@
 This app uses a Modulino Thermo to get the temperature in Celsius, and present it on the built in LED Matrix.
 The Python backend periodically pulls the temperature (in both C, and F) and the humidity from the device, storing it in a Time Series DB (InfluxDB). The web interface then shows current, and historic data.
 
-<img src="assets/doc_assets/in_action.jpg" alt="app in action" />
+![App in action](assets/doc_assets/in_action.jpg)
 
 ## Web Interface
 The Python application serves a responsive web dashboard at `http://<localhost>:7000/`.
 
-<img src="assets/doc_assets/webUI.png" alt="Web UI Screenshot" />
+![Web UI Screenshot](assets/doc_assets/WebUI.png)
 
 - **Displays**: Current temperature (in both °C and °F), current humidity, and the time of the last measurement.
 - **History Chart**: A real-time updating chart showing temperature and humidity data over a user-selectable history range (2 to 24 hours, automatically refreshed every 5 minutes).
