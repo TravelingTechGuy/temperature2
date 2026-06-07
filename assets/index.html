@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Thermometer emoji favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌡️</text></svg>">
+    <!-- Load Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header-container">
+        <div>
+            <h1>Modulino Thermo Dashboard</h1>
+            <p id="timestamp">Last measurement: Loading...</p>
+        </div>
+        <button onclick="openSettings()" class="settings-btn" title="Settings">⚙️</button>
+    </header>
+
+    <div class="container flex-col">
+        <div class="card full-width" id="temperature-card">
+            <h2>Temperature</h2>
+            <div id="temperature-display" class="value-display">--°C / --°F</div>
+        </div>
+        <div class="card full-width" id="humidity-card">
+            <h2>Humidity</h2>
+            <div id="humidity-display" class="value-display-small">--%</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card chart-card">
+            <canvas id="historyChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Settings</h2>
+                <button onclick="closeSettings()" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-row">
+                <span class="modal-label">Units shown on device: </span>
+                <button id="unit-toggle" onclick="toggleUnits()" class="btn-primary">--</button>
+            </div>
+            <div class="modal-row">
+                <label for="history-hours" class="modal-label">History range:</label>
+                <select id="history-hours" onchange="updateHistoryRange()" class="select-dropdown">
+                    <option value="2">2 hours</option>
+                    <option value="4" selected>4 hours</option>
+                    <option value="8">8 hours</option>
+                    <option value="12">12 hours</option>
+                    <option value="24">24 hours</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Vibrant gradient background */
+  background: linear-gradient(135deg, #1cb5e0 0%, #000851 100%);
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+#timestamp {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 30px;
+  flex: 1 1 300px;
+  text-align: center;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.full-width {
+  flex: 1 1 100%;
+}
+
+.chart-card {
+  flex: 1 1 100%;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.value-display {
+  font-size: 4.5rem;
+  font-weight: bold;
+  transition: color 0.5s ease;
+}
+
+.value-display-small {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.unit-toggle-container {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+#unit-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background 0.3s;
+}
+
+#unit-toggle:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#humidity-display {
+  color: #00e5ff;
+}

@@ -1,0 +1,7 @@
+name: Weather Sensor
+description: This app uses a Modulino Thermo to get the temperature in Celsius, and present it on the built in LED Matrix. It then sends the temperature (in both
+ports: []
+bricks:
+- arduino:web_ui: {}
+- arduino:dbstorage_tsstore: {}
+icon: 🌡️
