@@ -24,6 +24,10 @@ const chartData = {
 };
 
 function initChart() {
+  // Set global Chart.js defaults to match the app's dark UI theme
+  Chart.defaults.color = '#ffffff';
+  Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+
   const ctx = document.getElementById('historyChart').getContext('2d');
   historyChart = new Chart(ctx, {
     type: 'line',
@@ -31,19 +35,31 @@ function initChart() {
     options: {
       responsive: true,
       interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          labels: { color: '#ffffff' }
+        }
+      },
       scales: {
+        x: {
+          ticks: { color: 'rgba(255, 255, 255, 0.8)' },
+          grid: { color: 'rgba(255, 255, 255, 0.1)' }
+        },
         y: {
           type: 'linear',
           display: true,
           position: 'left',
-          title: { display: true, text: 'Temp (°C)' }
+          title: { display: true, text: 'Temp (°C)', color: '#ffffff' },
+          ticks: { color: 'rgba(255, 255, 255, 0.8)' },
+          grid: { color: 'rgba(255, 255, 255, 0.1)' }
         },
         y1: {
           type: 'linear',
           display: true,
           position: 'right',
-          title: { display: true, text: 'Humidity (%)' },
-          grid: { drawOnChartArea: false }
+          title: { display: true, text: 'Humidity (%)', color: '#ffffff' },
+          ticks: { color: 'rgba(255, 255, 255, 0.8)' },
+          grid: { drawOnChartArea: false, color: 'rgba(255, 255, 255, 0.1)' }
         }
       }
     }
