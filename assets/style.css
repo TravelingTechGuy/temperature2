@@ -69,6 +69,8 @@ h1 {
 
 .chart-card {
   flex: 1 1 100%;
+  position: relative;
+  height: 400px;
 }
 
 .value-display {
@@ -324,8 +326,8 @@ footer {
     width: 100%;
   }
 
-  .card {
-    flex: 1 1 100%;
-    width: 100%;
+  .chart-card {
+    height: 350px;
+    padding: 15px; /* Maximize chart width on small screens */
   }
 }

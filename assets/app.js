@@ -34,6 +34,7 @@ function initChart() {
     data: chartData,
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: {
