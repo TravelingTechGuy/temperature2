@@ -143,15 +143,23 @@ h1 {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 1.1rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.3s;
 }
 
 .settings-btn:hover {
   background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.settings-btn:active {
+  transform: scale(0.9) rotate(90deg);
 }
 
 /* Floating Settings Modal Overlay */
@@ -306,6 +314,11 @@ h1 {
   }
 
   .btn-primary, .select-dropdown {
+    width: 100%;
+  }
+
+  .card {
+    flex: 1 1 100%;
     width: 100%;
   }
 }
